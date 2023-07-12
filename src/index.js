@@ -9,8 +9,8 @@ function App(props) {
   )
 }
 
-function withSaludo(WrappedComponent) {
-  return function WrappedComponentConSaludo(saludo){
+function withSaludo(saludo) {
+  return function WrappedComponentConSaludo(WrappedComponent){
     return function ComponenteDeVerdad(props) {
       return (
         <>
@@ -22,7 +22,7 @@ function withSaludo(WrappedComponent) {
   }
 }
 
-const AppWithSaludo = withSaludo(App)('Hola')
+const AppWithSaludo = withSaludo('Hola')(App)
 
 ReactDOM.render(
   <AppWithSaludo  nombre="Nath" />,
